@@ -37,6 +37,13 @@ $ \dt
 $ select * from account;
 <br/>
 
+<pre>
+현재 이 예제에서는..
+postgres 사용자 => rey
+데이터베이스 => springdata
+account 테이블에 있는 사용자 데이터 => sombrero104 / pass
+</pre>
+<br/>
 
 <br/><br/><br/><br/>
 
