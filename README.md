@@ -45,6 +45,9 @@ account 테이블에 있는 사용자 데이터 => sombrero104 / pass
 </pre>
 <br/>
 
+JPA의 EntityManager가 내부적으로는 하이버네이트를 사용한다. <br/>
+때문에 JPA 기반으로 코딩할 수도 있고, 하이버네이트 기반으로 코딩할 수도 있다. <br/>
+
 <br/><br/><br/><br/>
 
 
