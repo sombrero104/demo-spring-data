@@ -19,16 +19,19 @@ $ docker start [컨테이너 이름]
 
 #### ∙ 컨테이너 접근 
 $ docker exec -i -t [컨테이너 이름] bash
+<br/>
 
 #### ∙ postgres 접속 
 $ su - postgres
+<br/>
 
 #### ∙ 내가 만든 'springdata' 데이터베이스 접근 
 $ psql --username rey --dbname springdata
+<br/>
 
 #### ∙ 접속한 DB Instance의 테이블 목록 확인 
 $ \dt
-
+<br/>
 
 
 
