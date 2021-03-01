@@ -33,6 +33,9 @@ $ psql --username rey --dbname springdata
 $ \dt
 <br/>
 
+#### ∙ 내가 만든 'account' 테이블 조회
+$ select * from account;
+<br/>
 
 
 <br/><br/><br/><br/>
