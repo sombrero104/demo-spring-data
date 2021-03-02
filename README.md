@@ -9,40 +9,50 @@
 <br/>
 
 #### ∙ 현재 떠있는 컨테이너 확인  
+<pre>
 $ docker ps
-<br/>
+</pre>
 
 #### ∙ 컨테이너는 존재하지만 동작하지 않고 있는(멈춰있는) 컨테이너 확인 
+<pre>
 $ docker ps -a 
-<br/>
+</pre>
 
 #### ∙ 컨테이너 실행
+<pre>
 $ docker start [컨테이너 이름]
-<br/>
+</pre>
 
 #### ∙ 컨테이너 접근 
+<pre>
 $ docker exec -i -t [컨테이너 이름] bash
-<br/>
+</pre>
 
 #### ∙ postgres 접속 
+<pre>
 $ su - postgres
-<br/>
+</pre>
 
 #### ∙ 내가 만든 'springdata' 데이터베이스 접근 
+<pre>
 $ psql --username rey --dbname springdata
-<br/>
+</pre>
 
 #### ∙ 접속한 DB Instance의 테이블 목록 확인 
+<pre>
 $ \dt
-<br/>
+</pre>
 
 #### ∙ 내가 만든 'account' 테이블 조회
+<pre>
 $ select * from account;
-<br/>
+</pre>
 
 #### ∙ postgres 유저 확인
+<pre>
 $ \du
-<br/> 
+</pre>
+<br/>
 
 <pre>
 현재 이 예제에서는..
