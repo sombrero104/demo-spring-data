@@ -83,7 +83,7 @@ JPA의 핵심인 EntityManagerFactoryBuilder가 entityManagerFactoryBuilder()에
 
 ### 잠깐, 엔티티의 상태란?
 - Transient: JPA가 모르는 상태.
-- Persistent: JPA가 관리중인 상태. <br/>
+- Persistent: JPA가 관리중인 상태. (엔티티 객체의 변경사항을 JPA가 모니터링하고 있다는 의미.) <br/>
   Persistent 상태가 되면 하이버네이트가 1차 캐시, Dirty Checking, Write Behind, 등등과 같은 여러가지 일을 해준다.<br/>
   EntityManager, Session을 Persistent Context라고 부르는데<br/>
   save가 되면 이 Persistent Context에 저장이 된다. (즉, 캐시가 된다.) <br/>
