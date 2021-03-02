@@ -56,6 +56,12 @@ public class JpaRunner implements ApplicationRunner {
          * 위에서 이미 저장된(캐시된) 데이터가 있기 때문에 DB에서 가져오지 않는다. (select 쿼리가 발생하지 않는다.)
          */
         Account anton = session.load(Account.class, account.getId());
+        System.out.println("=========================");
+        System.out.println("##### anton.getUsername(): " + anton.getUsername());
+        /**
+         * 위 코드를 실행하는 시점은 save 호출 이후 아직 DB에 저장하지도 않은 상태이다!!
+         * 때문에 위에서 캐시된 정보를 출력한 후 트랜잭션이 끝날 때 마지막에 insert가 발생한다.
+         */
     }
 
 }
