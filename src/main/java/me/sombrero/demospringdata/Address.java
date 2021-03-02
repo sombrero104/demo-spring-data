@@ -12,6 +12,7 @@ import javax.persistence.Embeddable;
  * Account 엔티티가 만들어지면 Address도 만들어지고, Account 엔티티가 삭제되면 같이 삭제된다.
  * 이와 같이 어떠한 엔티티에 종속적인 타입을 Value 타입이라고 보면 된다.
  * Value 타입에는 @Embeddable 애노테이션을 붙인다.
+ * 이 Address를 사용하는 엔티티쪽에서는 @Embedded를 붙여준다.
  */
 @Embeddable
 public class Address {

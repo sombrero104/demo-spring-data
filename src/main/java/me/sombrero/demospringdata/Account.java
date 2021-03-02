@@ -77,6 +77,9 @@ public class Account {
     @Transient // 컬럼으로 매핑 안해줌. (컬럼 생성 제외.)
     private String no;
 
+    @Embedded
+    private Address address;
+
     public Long getId() {
         return id;
     }
