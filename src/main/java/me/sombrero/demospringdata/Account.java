@@ -13,6 +13,20 @@ import java.util.Date;
  *
  * User는 몇몇 DB에서 예약어로 되어 있어서 테이블명으로 사용 불가능하다. (postgre도 그러하다.)
  */
+
+/**
+ * [ Entity 타입과 Value 타입 ]
+ * Entity 타입은 id와 같은 고유한 식별자를 가지고 있다.
+ * 다른 엔티티에서 이 Account 엔티티를 독립적으로 참조하는 경우가 생긴다.
+ * 하지만 Value 타입인 username과 password 같은 필드는 항상 Account 엔티티를 통해서만 접근할 수 있다.
+ *
+ * [ Value 타입의 종류 ]
+ * (1) 기본 타입 (String, Date, Boolean, ...)
+ * (2) Composite Value 타입
+ * (3) Collection Value 타입
+ *      (3-1) 기본 타입의 컬렉션
+ *      (3-2) 컴포짓 타입의 컬렉션
+ */
 @Entity
 public class Account {
 
