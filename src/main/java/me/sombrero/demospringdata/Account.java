@@ -39,6 +39,10 @@ public class Account {
     /**
      * 모든 엔티티의 멤버변수에는 @Column이 생략되어 있는 것과 마찬가지이다.
      * @Column을 지정하는 대부분의 경우는 nullable, unique와 같이 추가적인 제약을 지정해줄 때 사용한다.
+     *
+     * 주의!)
+     * 최초 @Column 만 붙여서 컬럼을 만든 상태에서 중간에 unique = true 를 붙일 수는 없다.
+     * 이미 컬럼이 만들어진 상태에서는 변경이 불가능하다. (그래서 개발 시에는 ddl-auto 옵션을 create로 사용하는 것이 편리하다.)
      */
     @Column(nullable = false, unique = true)
     private String username;
