@@ -91,7 +91,8 @@ JPA의 핵심인 EntityManagerFactoryBuilder가 entityManagerFactoryBuilder()에
              (즉, select 쿼리가 발생하지 않는다.)
   - Dirty Checking: 엔티티 객체의 변경사항을 계속 감지한다는 의미. <br/>
   - Write Behind: 엔티티 객체의 상태 변화를 DB에 최대한 늦게 (가장 필요한 시점에) 적용한다는 의미. <br/>
-- Detached: JPA가 더이상 관리하지 않는 상태.
+- Detached: JPA가 더이상 관리하지 않는 상태.<br/>
+트랜잭션이 끝나서 Session 밖으로 나온 후 객체가 밖에서 사용이 될 때는 Detached 상태가 된다. 
 - Removed: JPA가 관리하긴 하지만 삭제하기로 한 상태.
 <br/>
 
