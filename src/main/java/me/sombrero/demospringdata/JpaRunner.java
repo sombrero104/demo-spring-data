@@ -22,6 +22,10 @@ public class JpaRunner implements ApplicationRunner {
         account.setUsername("Anton");
         account.setPassword("pass");
 
+        Study study = new Study();
+        study.setName("Spring Data JPA");
+        study.setOwner(account);
+
         // entityManager.persist(account); // JPA로 저장하기.
 
         /**
@@ -29,6 +33,7 @@ public class JpaRunner implements ApplicationRunner {
          */
         Session session = entityManager.unwrap(Session.class);
         session.save(account); // 하이버네이트로 저장하기.
+        session.save(study);
     }
 
 }

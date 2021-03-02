@@ -77,6 +77,10 @@ public class Account {
     @Transient // 컬럼으로 매핑 안해줌. (컬럼 생성 제외.)
     private String no;
 
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "home_street"))
+    })
     private Address address;
 
     public Long getId() {
