@@ -86,7 +86,7 @@ public class Account {
     private Address address;
 
     /**
-     * [ 관계의 주인이 Account인 경우 ] => 기본값은 조인 테이블 생성.
+     * [ 관계의 주인이 Account인 경우 ] => @OneToMany : 기본값은 조인 테이블 생성.
      * Account 엔티티에서 Study 엔티티와의 관계를 설정했으므로
      * Account가 이 관계에 대한 주인이며, Account가 이 관계를 관리한다.
      * 실행하면 아래와 같이 'account_studies'라는 조인 테이블이 생성된다.
@@ -96,8 +96,17 @@ public class Account {
      *         studies_id int8 not null,
      *         primary key (account_id, studies_id)
      *     )
+     *
+     * [ 양방향 관계 설정하기 ]
+     * 양쪽에 @OneToMany, @ManyToOne를 붙인 후..
+     * 아래와 같이 @OneToMany의 mappedBy에 상대 필드인 Account 변수 이름을 설정해 준다.
+     * 이렇게 설정하지 않으면 양쪽 모두 단방향이게 된다.
+     * 주인은 외래키를 가진 Study가 된다.
+     * @OneToMany(mappedBy = "owner")
+     * 그리고, 관계에 대한 매핑을 관계의 주인인 Study쪽에 해준다.
      */
-    @OneToMany // 한 사람이 여러개의 스터디를 만들 수 있다.
+    // @OneToMany // 한 사람이 여러개의 스터디를 만들 수 있다.
+    @OneToMany(mappedBy = "owner") // 양방향 관계로 설정할 경우, mappedBy를 설정해 준다. (상대의 필드 변수 이름으로..) 주인은 FK를 가진 Study가 된다.
     private Set<Study> studies = new HashSet<>(); // OneToMany 이므로 타입이 컬렉션이어야 한다.
 
     public Long getId() {
