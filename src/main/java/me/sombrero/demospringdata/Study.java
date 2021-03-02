@@ -41,12 +41,12 @@ public class Study {
         this.name = name;
     }
 
-    /*public Account getOwner() {
+    public Account getOwner() {
         return owner;
     }
 
     public void setOwner(Account owner) {
         this.owner = owner;
-    }*/
+    }
 
 }

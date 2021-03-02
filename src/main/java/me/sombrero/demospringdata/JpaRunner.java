@@ -25,8 +25,17 @@ public class JpaRunner implements ApplicationRunner {
 
         Study study = new Study();
         study.setName("Spring Data JPA");
-        // study.setOwner(account);
+
+        /**
+         * 단방향 관계일 경우에는 주인인 한쪽에만 값을 설정해줘도 되지만,
+         * 양방향 관계일 경우에는 양쪽 다 값을 줘야 한다.
+         * 양방향이기 때문에 서로간에 정보를 서로가 가지고 있어야 맞다.
+         */
+        /*
         account.getStudies().add(study);
+        study.setOwner(account);
+        */
+        account.addStudy(study); // 양방향 관계일 경우, 위 두줄을 하나로 묶어서 메소드로 만들어 두는 것이 좋다.
 
         // entityManager.persist(account); // JPA로 저장하기.
 

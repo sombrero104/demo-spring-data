@@ -141,4 +141,18 @@ public class Account {
         this.studies = studies;
     }
 
+    /**
+     * Study와 Account가 양방향 관계일 경우,
+     * 양쪽 다 서로에 대한 정보를 가지고 있어야 하므로
+     * 서로에 대한 정보를 저장하는 부분을 하나로 묶어서 관리하는 것이 좋다.
+     */
+    public void addStudy(Study study) {
+        this.getStudies().add(study);
+        study.setOwner(this);
+    }
+
+    public void removeStudy(Study study) {
+        this.getStudies().remove(study);
+        study.setOwner(null);
+    }
 }
