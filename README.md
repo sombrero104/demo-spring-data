@@ -53,7 +53,7 @@ $ select * from account;
 $ \du
 </pre>
 
-#### ∙ 데이터베이스 설정 정보 
+#### ∙ 기타 데이터베이스 설정 정보 
 <pre>
 현재 이 예제에서는..
 postgres 사용자 => rey
@@ -62,13 +62,13 @@ account 테이블에 있는 사용자 데이터 => sombrero104 / pass
 </pre>
 <br/><br/><br/><br/>
 
-## JPA와 하이버네이트 
+# JPA와 하이버네이트 
 JPA의 EntityManager가 내부적으로는 하이버네이트를 사용한다. <br/>
 때문에 JPA 기반으로 코딩할 수도 있고, 하이버네이트 기반으로 코딩할 수도 있다. <br/>
 하지만 대부분의 경우에는 JPA 또는 하이버네이트의 API를 직접적으로 사용하는 경우는 없다. <br/>
 <br/>
 
-## JPA의 핵심인 EntityManager 
+# JPA의 핵심인 EntityManager 
 HibernateJpaAutoConfiguration에서 HibernateJpaConfiguration 설정파일을 가져온다. <br/>
 HibernateJpaConfiguration 설정파일의 상위 클래스인 JpaBaseConfiguration을 보면, <br/>
 JPA의 핵심인 EntityManagerFactoryBuilder가 entityManagerFactoryBuilder()에서 빈으로 등록이 되는 것을 확인할 수 있다. <br/>
