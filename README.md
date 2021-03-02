@@ -37,6 +37,10 @@ $ \dt
 $ select * from account;
 <br/>
 
+#### ∙ postgres 유저 확인
+$ \du
+<br/> 
+
 <pre>
 현재 이 예제에서는..
 postgres 사용자 => rey
