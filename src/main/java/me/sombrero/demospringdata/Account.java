@@ -45,6 +45,10 @@ public class Account {
 
     private String password;
 
+    /**
+     * 컬럼이 이미 만들어져 있는 상태에서 중간에 타입을 변경할 수 없다.
+     * (예를 들어 TemporalType.TIMESTAMP 으로 컬럼을 만들었는데 중간에 TemporalType.TIME 으로 바꾼다던가..)
+     */
     @Temporal(TemporalType.DATE) // 날짜만 DB에 들어간다. (예시 => 2021-03-02)
     // @Temporal(TemporalType.TIME) // 시간만 DB에 들어간다. (예시 => 18:04:15.671)
     // @Temporal(TemporalType.TIMESTAMP) // 날짜와 시간이 DB에 들어간다. (예시 => 2021-03-02 18:03:00.79)
