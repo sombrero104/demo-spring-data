@@ -1,9 +1,7 @@
 package me.sombrero.demospringdata;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @Entity
@@ -38,9 +36,24 @@ public class Account {
     @Id @GeneratedValue
     private Long id;
 
+    /**
+     * 모든 엔티티의 멤버변수에는 @Column이 생략되어 있는 것과 마찬가지이다.
+     * @Column을 지정하는 대부분의 경우는 nullable, unique와 같이 추가적인 제약을 지정해줄 때 사용한다.
+     */
+    @Column(nullable = false, unique = true)
     private String username;
 
     private String password;
+
+    @Temporal(TemporalType.DATE) // 날짜만 DB에 들어간다. (예시 => 2021-03-02)
+    // @Temporal(TemporalType.TIME) // 시간만 DB에 들어간다. (예시 => 18:04:15.671)
+    // @Temporal(TemporalType.TIMESTAMP) // 날짜와 시간이 DB에 들어간다. (예시 => 2021-03-02 18:03:00.79)
+    private Date created = new Date();
+
+    private String yes;
+
+    @Transient // 컬럼으로 매핑 안해줌. (컬럼 생성 제외.)
+    private String no;
 
     public Long getId() {
         return id;
