@@ -59,7 +59,7 @@ JPA의 핵심인 EntityManagerFactoryBuilder가 entityManagerFactoryBuilder()에
 이외에도 entityManagerFactory()에서 EntityManagerFactory를 빈으로 등록하는 것을 확인할 수 있는데 <br/>
 이것 때문에 우리는 EntityManager를 주입 받아서 사용할 수 있는 것이다. <br/>
 이외에도 TransactionManager도 이곳에서 빈으로 등록하는 것을 확인할 수 있다. <br/>
-<br/>
+<br/><br/><br/><br/>
 
 # CASCADE
 - CASCADE: 엔티티의 상태 변화를 전파 시키는 옵션.
