@@ -68,6 +68,7 @@ public class JpaRunner implements ApplicationRunner {
         anton.setUsername("Gogol");
         anton.setUsername("Carl");
         anton.setUsername("Anton"); // 이름을 3번 변경했지만 update문이 발생하지 않는다.
+        // 왜? 바꿀 필요가 없으니까. 객체의 상태가 처음이랑 똑같으니까.
 
         System.out.println("=====================================================");
         System.out.println("##### anton.getUsername(): " + anton.getUsername());

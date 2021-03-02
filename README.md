@@ -85,6 +85,8 @@ JPA의 핵심인 EntityManagerFactoryBuilder가 entityManagerFactoryBuilder()에
 - Transient: JPA가 모르는 상태.
 - Persistent: JPA가 관리중인 상태. (엔티티 객체의 변경사항을 JPA가 모니터링하고 있다는 의미.) <br/>
   Persistent 상태가 되면 하이버네이트가 1차 캐시, Dirty Checking, Write Behind, 등등과 같은 여러가지 일을 해준다.<br/>
+  - Dirty Checking: 엔티티 객체의 변경사항을 계속 감지한다는 의미. <br/>
+  - Write Behind: 엔티티 객체의 상태 변화를 DB에 최대한 늦게 (가장 필요한 시점에) 적용한다는 의미. <br/>
   EntityManager, Session을 Persistent Context라고 부르는데<br/>
   save가 되면 이 Persistent Context에 저장이 된다. (즉, 캐시가 된다.) <br/>
   때문에 save 이후, 트랜잭션이 끝나기 전에 조회하는 메소드를 호출하면 DB에서 가져오지 않고 캐시에 있는 것을 꺼내준다. <br/> 
