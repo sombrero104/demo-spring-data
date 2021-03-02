@@ -72,7 +72,7 @@ JPA의 핵심인 EntityManagerFactoryBuilder가 entityManagerFactoryBuilder()에
 - Removed: JPA가 관리하긴 하지만 삭제하기로 한 상태.
 <br/>
 
-<img src="./images/entity_states.png" width="90%" /><br/>
+<img src="./images/entity_states.png" width="70%" /><br/>
 <br/>
 
 <br/><br/><br/><br/>
