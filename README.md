@@ -61,6 +61,20 @@ JPA의 핵심인 EntityManagerFactoryBuilder가 entityManagerFactoryBuilder()에
 이외에도 TransactionManager도 이곳에서 빈으로 등록하는 것을 확인할 수 있다. <br/>
 <br/>
 
+# CASCADE
+- CASCADE: 엔티티의 상태 변화를 전파 시키는 옵션.
+<br/>
+
+### 잠깐, 엔티티의 상태란?
+- Transient: JPA가 모르는 상태.
+- Persistent: JPA가 관리중인 상태. (1차 캐시, Dirty Checking, Write Behind, ...)
+- Detached: JPA가 더이상 관리하지 않는 상태.
+- Removed: JPA가 관리하긴 하지만 삭제하기로 한 상태.
+<br/>
+
+<img src="./images/entity_states.png" width="90%" /><br/>
+<br/>
+
 <br/><br/><br/><br/>
 
 
