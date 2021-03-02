@@ -37,6 +37,12 @@ public class JpaRunner implements ApplicationRunner {
         */
         account.addStudy(study); // 양방향 관계일 경우, 위 두줄을 하나로 묶어서 메소드로 만들어 두는 것이 좋다.
 
+        /**
+         * 저장하는 메소드 호출.
+         * 저장하는 메소드 호출 전까지의 엔티티는 Transient 상태,
+         * 저장하는 메소드 호출 후에는 JPA에 의해 관리되는 Persistent 상태이다. (JPA가 아는 상태.)
+         * 그리고 저장하는 메소드를 호출한다고 해서 바로 DB에 저장되는 것은 아니다.
+         */
         // entityManager.persist(account); // JPA로 저장하기.
 
         /**
