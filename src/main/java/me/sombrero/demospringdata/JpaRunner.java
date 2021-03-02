@@ -51,6 +51,11 @@ public class JpaRunner implements ApplicationRunner {
         Session session = entityManager.unwrap(Session.class);
         session.save(account); // 하이버네이트로 저장하기.
         session.save(study);
+
+        /**
+         * 위에서 이미 저장된(캐시된) 데이터가 있기 때문에 DB에서 가져오지 않는다. (select 쿼리가 발생하지 않는다.)
+         */
+        Account anton = session.load(Account.class, account.getId());
     }
 
 }

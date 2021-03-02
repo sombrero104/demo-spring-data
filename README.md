@@ -88,6 +88,7 @@ JPA의 핵심인 EntityManagerFactoryBuilder가 entityManagerFactoryBuilder()에
   EntityManager, Session을 Persistent Context라고 부르는데<br/>
   save가 되면 이 Persistent Context에 저장이 된다. (즉, 캐시가 된다.) <br/>
   때문에 save 이후, 트랜잭션이 끝나기 전에 조회하는 메소드를 호출하면 DB에서 가져오지 않고 캐시에 있는 것을 꺼내준다. <br/> 
+  (즉, select 쿼리가 발생하지 않는다.)
 - Detached: JPA가 더이상 관리하지 않는 상태.
 - Removed: JPA가 관리하긴 하지만 삭제하기로 한 상태.
 <br/>
