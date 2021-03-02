@@ -55,8 +55,21 @@ public class JpaRunner implements ApplicationRunner {
         /**
          * 위에서 이미 저장된(캐시된) 데이터가 있기 때문에 DB에서 가져오지 않는다. (select 쿼리가 발생하지 않는다.)
          */
-        Account anton = session.load(Account.class, account.getId());
-        System.out.println("=========================");
+        Account anton = session.load(Account.class, account.getId()); // 조회하지만 select 쿼리문이 발생하지 않는다.
+
+        /**
+         * 원래의 값과는 다른 값으로 값을 한 번 수정하는 경우.
+         */
+        // anton.setUsername("Gogol"); // update 쿼리문이 발생한다.
+
+        /**
+         * 값을 여러번 수정하는데 마지막에 수정한 값이 원래의 값과 같은 경우.
+         */
+        anton.setUsername("Gogol");
+        anton.setUsername("Carl");
+        anton.setUsername("Anton"); // 이름을 3번 변경했지만 update문이 발생하지 않는다.
+
+        System.out.println("=====================================================");
         System.out.println("##### anton.getUsername(): " + anton.getUsername());
         /**
          * 위 코드를 실행하는 시점은 save 호출 이후 아직 DB에 저장하지도 않은 상태이다!!
