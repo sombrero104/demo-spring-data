@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 
 @Component
 @Transactional
@@ -24,7 +25,8 @@ public class JpaRunner implements ApplicationRunner {
 
         Study study = new Study();
         study.setName("Spring Data JPA");
-        study.setOwner(account);
+        // study.setOwner(account);
+        account.getStudies().add(study);
 
         // entityManager.persist(account); // JPA로 저장하기.
 

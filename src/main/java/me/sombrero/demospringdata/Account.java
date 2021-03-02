@@ -2,6 +2,8 @@ package me.sombrero.demospringdata;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @Entity
@@ -83,6 +85,21 @@ public class Account {
     })
     private Address address;
 
+    /**
+     * [ 관계의 주인이 Account인 경우 ] => 기본값은 조인 테이블 생성.
+     * Account 엔티티에서 Study 엔티티와의 관계를 설정했으므로
+     * Account가 이 관계에 대한 주인이며, Account가 이 관계를 관리한다.
+     * 실행하면 아래와 같이 'account_studies'라는 조인 테이블이 생성된다.
+     * =>
+     *     create table account_studies (
+     *        account_id int8 not null,
+     *         studies_id int8 not null,
+     *         primary key (account_id, studies_id)
+     *     )
+     */
+    @OneToMany // 한 사람이 여러개의 스터디를 만들 수 있다.
+    private Set<Study> studies = new HashSet<>(); // OneToMany 이므로 타입이 컬렉션이어야 한다.
+
     public Long getId() {
         return id;
     }
@@ -105,6 +122,14 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Study> getStudies() {
+        return studies;
+    }
+
+    public void setStudies(Set<Study> studies) {
+        this.studies = studies;
     }
 
 }
