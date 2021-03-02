@@ -155,4 +155,5 @@ public class Account {
         this.getStudies().remove(study);
         study.setOwner(null);
     }
+
 }
