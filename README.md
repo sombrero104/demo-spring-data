@@ -197,4 +197,12 @@ PostRepository postRepository;
 ...
     postRepository.findAll().forEach(System.out::println);
 </pre>
+<br/>
+
+스프링부트가 아닌 스프링프레임워크에서는 @EnableJpaRepositories를 @Configuration인 클래스에 설정해줘야 하는데<br/>
+이 @EnableJpaRepositories를 살펴보면 JpaRepositoriesRegistrar 클래스를 임포트하는 것을 확인할 수 있다.<br/>
+바로 이 JpaRepositoriesRegistrar이 우리가 만든 리파지토리를 빈으로 등록시키는 역할을 한다.<br/>
+최상위에는 ImportBeanDefinitionRegistrar 인터페이스가 있는데 이 인터페이스는 스프링 프레임워크가 제공한다. <br/>
+이 ImportBeanDefinitionRegistrar의 구현체는 JpaRepository를 상속받는 인터페이스를 찾아서 프로그래밍으로 빈을 등록해준다.  <br/>
+
 <br/><br/><br/><br/>
