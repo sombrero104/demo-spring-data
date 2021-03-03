@@ -11,11 +11,11 @@ import java.util.List;
  * 이렇게 만들면 스프링 데이터 JPA가 이 인터페이스도 빈으로 등록해주고
  * 커스텀 메소드도 자동으로 구현해준다.
  */
-@RepositoryDefinition(domainClass = Comment.class, idClass = Long.class) // 엔티티 타입, 엔티티에서 사용하는 아이디(PK 타입)
-public interface CommentRepository {
+// @RepositoryDefinition(domainClass = Comment.class, idClass = Long.class) // 엔티티 타입, 엔티티에서 사용하는 아이디(PK 타입)
+public interface CommentRepository extends MyRepository<Comment, Long> {
 
-    Comment save(Comment comment); // 커스텀 메소드. 스프링 데이터 JPA가 자동으로 구현해준다.
+    /*Comment save(Comment comment); // 커스텀 메소드. 스프링 데이터 JPA가 자동으로 구현해준다.
 
-    List<Comment> findAll();
+    List<Comment> findAll();*/
 
 }
