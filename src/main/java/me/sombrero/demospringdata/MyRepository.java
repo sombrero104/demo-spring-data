@@ -26,6 +26,6 @@ public interface MyRepository<T, Id extends Serializable> extends Repository<T, 
      * Optional을 사용하지 않고 Entity만 반환하게 사용하면
      * 값이 없는 경우 그냥 null이 나온다.
      */
-    <E extends T> Optional<E> findById(Id id); // Optional을 리턴하는 경우.
-    // <E extends T> E findById(Id id); // Optional을 사용하지 않고 Entity만 반환하는 경우 값이 없으면 null 리턴.
+    // <E extends T> Optional<E> findById(Id id); // Optional을 리턴하는 경우.
+    <E extends T> E findById(Id id); // Optional을 사용하지 않고 Entity만 반환하는 경우 값이 없으면 null 리턴.
 }

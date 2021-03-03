@@ -31,8 +31,11 @@ class CommentRepositoryTest {
         long count = commentRepository.count();
         assertThat(count).isEqualTo(1);*/
 
-        Optional<Comment> byId = commentRepository.findById(100l); // Optional로 반환된다.
-        assertThat(byId).isEmpty();
+        /**
+         * [ Optional로 반환받아서 사용 (Optional은 자바8 이상에서 지원.) ]
+         */
+        /*Optional<Comment> byId = commentRepository.findById(100l); // Optional로 반환된다.
+        assertThat(byId).isEmpty();*/
          // byId.isPresent(); // 값이 있는지 없는지 확인하는 Optional 메소드.
         /**
          * 위에서 받아온 comment가 있으면 해당 comment가 저장되고
@@ -43,7 +46,16 @@ class CommentRepositoryTest {
          * 위에서 받아온 comment가 있으면 해당 comment가 저장되고
          * 없으면 예외를 던진다.
          */
-        Comment comment = byId.orElseThrow(IllegalArgumentException::new);
+        // Comment comment = byId.orElseThrow(IllegalArgumentException::new);
+
+        /**
+         * [ Optional로 반환받지 않고 그냥 Entity로 반환받는 경우 ]
+         */
+        Comment comment = commentRepository.findById(100l);
+        if(comment == null) { // 최근에는 null 안쓰는 쪽으로 가는 추세.
+            throw new IllegalArgumentException();
+        }
+        // assertThat(comment).isNull();
     }
 
 }
