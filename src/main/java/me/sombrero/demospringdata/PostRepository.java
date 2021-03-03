@@ -1,5 +1,7 @@
 package me.sombrero.demospringdata;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -10,4 +12,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 그리고 @Repository를 붙이지 않아도 빈으로 등록이 된다.
  */
 public interface PostRepository extends JpaRepository<Post, Long> { // < 엔티티 타입, 엔티티에서 사용하는 아이디(PK 타입) >
+
+    /**
+     * 이렇게만 만들어두면 메소드 이름을 분석해서 자동으로 쿼리를 만들어준다.
+     */
+    Page<Post> findByTitleContains(String title, Pageable pageable);
+
 }
