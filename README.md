@@ -207,6 +207,6 @@ PostRepository postRepository;
 <br/><br/><br/><br/>
 
 # 스프링 데이터 JPA 활용
-<img src="./images/springdata.png" width="75%" /><br/>
+<img src="./images/springdata.png" width="50%" /><br/>
 
 <br/><br/><br/><br/>
