@@ -105,5 +105,7 @@ JPA에 의해 관리되었던 객체가 트랜잭션이 끝나서 Session 밖으
 # Fetch
 연관관계의 엔티티를 지금 가져올 것인지, 나중에 가져올 것인지..
 지금(**_Eager_**)? 나중에(**_Lazy_**)?
+- @OneToMany의 기본값은 Lazy
+- @ManyToOne의 기본값은 Eager
 
 <br/><br/><br/><br/>
