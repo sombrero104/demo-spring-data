@@ -100,10 +100,20 @@ public class JpaRunner implements ApplicationRunner {
         System.out.println("===================================");
         System.out.println("##### post.getTitle(): " + post.getTitle());*/
 
-        Comment comment = session.get(Comment.class, 2l);
+        /*Comment comment = session.get(Comment.class, 2l);
         System.out.println("===================================");
         System.out.println("##### comment.getComment(): " + comment.getComment());
-        System.out.println("##### comment.getPost().getTitle(): " + comment.getPost().getTitle());
+        System.out.println("##### comment.getPost().getTitle(): " + comment.getPost().getTitle());*/
+
+
+        Post post = session.get(Post.class, 1l);
+        System.out.println("===================================");
+        System.out.println("##### post.getTitle(): " + post.getTitle());
+
+        post.getComments().forEach(c -> {
+            System.out.println("------------------------------------");
+            System.out.println(c.getComment());
+        });
     }
 
 }
