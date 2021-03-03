@@ -119,7 +119,7 @@ from
     post post0_ 
 where
     post0_.id=?
-</pre><br/>
+</pre><br/> 
 
 ### 2. Post에서 comments가 Eager인 경우. 
 @OneToMany에 'fetch = FetchType.EAGER'로 바꿔주면<br/>
