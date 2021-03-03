@@ -144,6 +144,22 @@ left outer join
         on post0_.id=comments1_.post_id 
 where
     post0_.id=?
-</pre>
+</pre><br/> 
 
+### comment를 가져오는 경우
+<pre>
+select
+    comment0_.id as id1_1_0_,
+    comment0_.comment as comment2_1_0_,
+    comment0_.post_id as post_id3_1_0_,
+    post1_.id as id1_2_1_,
+    post1_.title as title2_2_1_ 
+from
+    comment comment0_ 
+left outer join
+    post post1_ 
+        on comment0_.post_id=post1_.id 
+where
+    comment0_.id=?
+</pre>
 <br/><br/><br/><br/>

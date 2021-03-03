@@ -95,10 +95,15 @@ public class JpaRunner implements ApplicationRunner {
         /*Post post = session.get(Post.class, 3l);
         session.delete(post);*/
 
-        Post post = session.get(Post.class, 1l); // get은 무조건 DB에서 가져옴. 해당 데이터가 없으면 레퍼런스를 null로 만들고 예외를 던짐.
+        /*Post post = session.get(Post.class, 1l); // get은 무조건 DB에서 가져옴. 해당 데이터가 없으면 레퍼런스를 null로 만들고 예외를 던짐.
         // Post post_load = session.load(Post.class, 1l); // load는 데이터가 없으면 예외를 던짐. 프록시로도 가져올 수 있음.
         System.out.println("===================================");
-        System.out.println("##### post.getTitle(): " + post.getTitle());
+        System.out.println("##### post.getTitle(): " + post.getTitle());*/
+
+        Comment comment = session.get(Comment.class, 2l);
+        System.out.println("===================================");
+        System.out.println("##### comment.getComment(): " + comment.getComment());
+        System.out.println("##### comment.getPost().getTitle(): " + comment.getPost().getTitle());
     }
 
 }
