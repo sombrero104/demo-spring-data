@@ -213,6 +213,9 @@ PostRepository postRepository;
 - 스프링 데이터 REST: 저장소의 데이터를 하이퍼미디어 기반 HTTP 리소스로(REST API로) 제공하는 프로젝트.
 - 스프링 데이터 JPA: 스프링 데이터 Common이 제공하는 기능에 JPA 관련 기능 추가. 
 
-http://projects.spring.io/spring-data <br/>
+http://projects.spring.io/spring-data <br/><br/>
+
+<img src="./images/repository.png" width="50%" /><br/>
+- JpaRepository는 PagingAndSortingRepository를 상속 받고 있다. 
 
 <br/><br/><br/><br/>
