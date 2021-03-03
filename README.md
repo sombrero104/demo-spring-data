@@ -172,3 +172,8 @@ where
     comment0_.id=?
 </pre>
 <br/><br/><br/><br/>
+
+# JPQL (HQL)
+Java Persistence Query Language (Hibernate Query Language)<br/>
+SQL과 비슷하지만 가장 큰 차이점은 데이터베이스 테이블을 기준으로 쿼리하는 것이 아닌 엔티티 객체를 기준으로 쿼리하는 것이다.  <br/>
+<br/><br/><br/><br/>
