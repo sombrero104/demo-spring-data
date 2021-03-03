@@ -77,6 +77,9 @@ public class JpaRunner implements ApplicationRunner {
          * 위 코드를 실행하는 시점은 save 호출 이후 아직 DB에 저장하지도 않은 상태이다!!
          * 때문에 위에서 캐시된 정보를 출력한 후 트랜잭션이 끝날 때 마지막에 insert가 발생한다.
          */
+
+
+        Post post =
     }
 
 }

@@ -78,7 +78,9 @@ JPA의 핵심인 EntityManagerFactoryBuilder가 entityManagerFactoryBuilder()에
 <br/><br/><br/><br/>
 
 # CASCADE
-- CASCADE: 엔티티의 상태 변화를 전파 시키는 옵션.
+- CASCADE: 엔티티의 상태 변화를 전파 시키는 옵션.<br/>
+도메인의 관계가 Parent와 Child 관계에 있을 때 사용할 수 있다. <br/>
+예를 들어, Post와 Comment는 Post가 삭제되면 Comment도 삭제된다. <br/>
 <br/>
 
 ### 잠깐, 엔티티의 상태란?
