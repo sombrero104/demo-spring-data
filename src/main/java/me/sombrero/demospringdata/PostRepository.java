@@ -19,4 +19,6 @@ public interface PostRepository extends JpaRepository<Post, Long> { // < 엔티�
      */
     Page<Post> findByTitleContains(String title, Pageable pageable);
 
+    long countByTitleContains(String title);
+
 }

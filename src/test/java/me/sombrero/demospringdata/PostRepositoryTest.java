@@ -68,10 +68,16 @@ class PostRepositoryTest {
          */
         // When
         page = postRepository.findByTitleContains("spring", PageRequest.of(0, 10));
+        // Then
         assertThat(page.getTotalElements()).isEqualTo(1); // 전체 갯수가 몇개인지
         assertThat(page.getNumber()).isEqualTo(0); // 현재 페이지 번호
         assertThat(page.getSize()).isEqualTo(10); // 페이지 사이즈
         assertThat(page.getNumberOfElements()).isEqualTo(1); // 현재 페이지에 있는 post 갯수
+
+        // When
+        long spring = postRepository.countByTitleContains("spring");
+        // Then
+        assertThat(spring).isEqualTo(1);
     }
 
 }
