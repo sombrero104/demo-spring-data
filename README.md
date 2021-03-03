@@ -181,3 +181,20 @@ SQL과 비슷하지만 가장 큰 차이점은 데이터베이스 테이블을 �
 JPQL(HQL)이 각 DB에 맞는 SQL로 변환이 되어서 최종적으로 변환된 SQL이 실행됨. <br/>
 단점은 문자열이기 때문에 얼마든지 오타가 발생할 수 있다는 것이다. (Type safe하지 않다.)
 <br/><br/><br/><br/>
+
+# 스프링 데이터 JPA 원리
+아래와 같이 JpaRepository<엔티티 타입, 엔티티 PK>를 상속받는 리파지토리 인터페이스를 만들면<br/>
+직접 CRUD를 하는 메소드를 작성하지 않아도 된다. (코드가 간결해진다.)<br/>
+그리고 @Repository를 붙이지 않아도 빈으로 등록이 된다.
+<pre>
+public interface PostRepository extends JpaRepository❮Post, Long❯ { 
+                                    // ❮ 엔티티 타입, 엔티티에서 사용하는 아이디(PK 타입) ❯
+}
+</pre>
+<pre>
+@Autowired
+PostRepository postRepository;
+...
+    postRepository.findAll().forEach(System.out::println);
+</pre>
+<br/><br/><br/><br/>

@@ -163,6 +163,11 @@ public class JpaRunner implements ApplicationRunner {
         /*Query nativeQuery = entityManager.createNativeQuery("SELECT * FROM Post", Post.class);
         List<Post> posts = nativeQuery.getResultList();
         posts.forEach(System.out::println);*/
+
+        /**
+         * JPA Repository를 사용하는 방법.
+         */
+        postRepository.findAll().forEach(System.out::println);
     }
 
 }
