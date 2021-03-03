@@ -47,7 +47,7 @@ class PostRepositoryTest {
         assertThat(newPost.getId()).isNotNull();
 
         // When
-        List<Post> posts = postRepository.findAll();
+        List<Post> posts = postRepository.findAll(); // JPARepository API.
 
         // Then
         assertThat(posts.size()).isEqualTo(1);
