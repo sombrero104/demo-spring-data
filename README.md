@@ -179,4 +179,5 @@ where
 Java Persistence Query Language (Hibernate Query Language)<br/>
 SQL과 비슷하지만 가장 큰 차이점은 데이터베이스 테이블을 기준으로 쿼리하는 것이 아닌 엔티티 객체를 기준으로 쿼리하는 것이다.  <br/>
 JPQL(HQL)이 각 DB에 맞는 SQL로 변환이 되어서 최종적으로 변환된 SQL이 실행됨. <br/>
+단점은 문자열이기 때문에 얼마든지 오타가 발생할 수 있다는 것이다. (Type safe하지 않다.)
 <br/><br/><br/><br/>
