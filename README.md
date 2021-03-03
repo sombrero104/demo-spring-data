@@ -100,8 +100,10 @@ JPA에 의해 관리되었던 객체가 트랜잭션이 끝나서 Session 밖으
 <br/>
 
 <img src="./images/entity_states.png" width="75%" /><br/>
-<br/>
-
 <br/><br/><br/><br/>
 
+# Fetch
+연관관계의 엔티티를 지금 가져올 것인지, 나중에 가져올 것인지..
+지금(**_Eager_**)? 나중에(**_Lazy_**)?
 
+<br/><br/><br/><br/>
