@@ -61,4 +61,13 @@ public class Post {
         this.comments = comments;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                // ", comments=" + comments + // Lazy 모드에서 이 부분 때문에 comment까지 select 됨.
+                '}';
+    }
+
 }

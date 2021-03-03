@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.HashSet;
+import java.util.List;
 
 @Component
 @Transactional
@@ -119,7 +121,15 @@ public class JpaRunner implements ApplicationRunner {
          * [ JPQL (HQL) ]
          * 이 JPQL(HQL)이 각 DB에 맞는 SQL로 변환이 되어서 최종적으로 변환된 SQL이 실행됨.
          */
-        entityManager.createQuery("SELECT p FROM Post AS p"); // 엔티티 Post를 조회.
+        // Query query = entityManager.createQuery("SELECT p FROM Post AS p");// 엔티티 Post를 조회.
+        /**
+         * JPA 2.0 이후부터는 아래와 같이 Typed Query를 만들 수 있다.
+         * 이렇게 하면 결과 리스트가 Post타입의 리스트로 나오게 된다.
+         */
+        Query query = entityManager.createQuery("SELECT p FROM Post AS p", Post.class);
+        List<Post> posts = query.getResultList();
+        posts.forEach(System.out::println);
+
     }
 
 }
