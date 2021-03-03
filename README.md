@@ -107,6 +107,7 @@ JPA에 의해 관리되었던 객체가 트랜잭션이 끝나서 Session 밖으
 지금(**_Eager_**)? 나중에(**_Lazy_**)?
 - @OneToMany의 기본값은 Lazy
 - @ManyToOne의 기본값은 Eager
+<br/>
 
 ### 1. Post에서 comments가 Lazy인 경우. 
 @OneToMany이기 때문에 기본적으로 Lazy모드이다. 
@@ -118,7 +119,7 @@ from
     post post0_ 
 where
     post0_.id=?
-</pre>
+</pre><br/>
 
 ### 2. Post에서 comments가 Eager인 경우. 
 @OneToMany에 'fetch = FetchType.EAGER'로 바꿔주면<br/>
