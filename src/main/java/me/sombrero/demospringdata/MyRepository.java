@@ -5,6 +5,7 @@ import org.springframework.data.repository.Repository;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 @NoRepositoryBean
 public interface MyRepository<T, Id extends Serializable> extends Repository<T, Id> {
@@ -19,4 +20,12 @@ public interface MyRepository<T, Id extends Serializable> extends Repository<T, 
 
     List<T> findAll();
 
+    /**
+     * 단일값을 받아오는 경우에는 아래와 같이 Optional을 사용하는 것을 추천.
+     * null 체크 등을 좀 더 아름답게(?) 처리할 수 있다.
+     * Optional을 사용하지 않고 Entity만 반환하게 사용하면
+     * 값이 없는 경우 그냥 null이 나온다.
+     */
+    <E extends T> Optional<E> findById(Id id); // Optional을 리턴하는 경우.
+    // <E extends T> E findById(Id id); // Optional을 사용하지 않고 Entity만 반환하는 경우 값이 없으면 null 리턴.
 }

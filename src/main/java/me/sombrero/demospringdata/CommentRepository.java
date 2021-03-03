@@ -20,7 +20,8 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
 
     /**
      * 스프링 데이터 JPA Repository 인터페이스들이 제공하는 API 중 일부만 사용하고 싶은 경우에는
-     * 복사해서 가져와서 여기에서 써도 된다.
+     * 복사해서 가져와서 써도 된다.
      */
+    long count();
 
 }
