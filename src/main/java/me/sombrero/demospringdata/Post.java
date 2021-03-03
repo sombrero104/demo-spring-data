@@ -25,6 +25,7 @@ public class Post {
      */
     // @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST) // post를 저장할 때 comment도 같이 저장하도록 전파.
     // @OneToMany(mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}) // post를 저장,삭제할 때 comment도 같이 저장,삭제하도록 전파.
+    // @OneToMany(mappedBy = "post", cascade = CascadeType.ALL) // post의 모든 상태를 comment도 상태가 바뀌도록 전파.
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();
 
