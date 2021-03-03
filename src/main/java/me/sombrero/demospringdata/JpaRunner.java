@@ -114,6 +114,12 @@ public class JpaRunner implements ApplicationRunner {
             System.out.println("------------------------------------");
             System.out.println(c.getComment());
         });*/
+
+        /**
+         * [ JPQL (HQL) ]
+         * 이 JPQL(HQL)이 각 DB에 맞는 SQL로 변환이 되어서 최종적으로 변환된 SQL이 실행됨.
+         */
+        entityManager.createQuery("SELECT p FROM Post AS p"); // 엔티티 Post를 조회.
     }
 
 }
