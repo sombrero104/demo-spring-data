@@ -18,7 +18,7 @@ public class SombreroRegistrar implements ImportBeanDefinitionRegistrar {
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
         GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
         beanDefinition.setBeanClass(Sombrero.class); // 빈으로 만들 클래스.
-        beanDefinition.getPropertyValues().add("name", "sombrero104");
+        beanDefinition.getPropertyValues().add("name", "sombrero104"); // name 변수값이 여기서 덮어써진다.
         /**
          * 스프링 데이터 JPA에서는 위의 과정이 좀 더 복잡할 뿐이다.
          * 어떠한 인터페이스를 상속받는 클래스를 다 찾아서 그 클래스에 대한 beanDefinition을 다 만들어서

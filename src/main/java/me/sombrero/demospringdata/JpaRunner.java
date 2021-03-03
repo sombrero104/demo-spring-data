@@ -26,6 +26,9 @@ public class JpaRunner implements ApplicationRunner {
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    Sombrero sombrero;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         /*Account account = new Account();
@@ -167,7 +170,14 @@ public class JpaRunner implements ApplicationRunner {
         /**
          * JPA Repository를 사용하는 방법.
          */
-        postRepository.findAll().forEach(System.out::println);
+        // postRepository.findAll().forEach(System.out::println);
+
+        /**
+         * 빈을 프로그래밍으로 등록하기.
+         * Sombrero, SombreroRegistrar 자바 파일 소스 및 설명 참조.
+         */
+        System.out.println("##### sombrero.getName(): " + sombrero.getName()); // SombreroRegistrar에서 덮어쓴 이름이 출력된다.
+        System.out.println("##### sombrero.getDesc(): " + sombrero.getDesc());
     }
 
 }

@@ -6,7 +6,9 @@ package me.sombrero.demospringdata;
  */
 public class Sombrero {
 
-    private String name;
+    private String name = "sombrero104 :D";
+
+    private String desc = "hi :D";
 
     public String getName() {
         return name;
@@ -14,6 +16,14 @@ public class Sombrero {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
 }
