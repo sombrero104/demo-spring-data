@@ -19,6 +19,9 @@ public class Post {
     @OneToMany(mappedBy = "post")
     private Set<Comment> comments = new HashSet<>();
 
+    /**
+     * [ 컨비니언트 메소드 ]
+     */
     public void addComment(Comment comment) {
         this.getComments().add(comment);
         comment.setPost(this);

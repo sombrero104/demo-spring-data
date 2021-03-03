@@ -79,7 +79,12 @@ public class JpaRunner implements ApplicationRunner {
          */
 
 
-        Post post =
+        Post post = new Post();
+        post.setTitle("Spring Data JPA");
+
+        Comment comment = new Comment();
+        comment.setComment("spring data jpa comment");
+        post.addComment(comment);
     }
 
 }
