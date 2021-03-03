@@ -1,9 +1,6 @@
 package me.sombrero.demospringdata;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +13,14 @@ public class Post {
 
     private String title;
 
-    @OneToMany(mappedBy = "post")
+    /**
+     * cascade = CascadeType.PERSIST
+     *      => Post를 저장할 때 comment도 같이 저장하도록 전파.
+     *      Post 엔티티가 Transient에서 Persistent 상태로 넘어갈 때
+     *      Child에 해당하는 참조하고 있던 다른 객체들(연관관계에 있던 다른 객체들)도
+     *      같이 Persistent 상태로 되어서 같이 저장이 된다.
+     */
+    @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST) // post를 저장할 때 comment도 같이 저장하도록 전파.
     private Set<Comment> comments = new HashSet<>();
 
     /**
