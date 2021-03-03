@@ -215,7 +215,7 @@ PostRepository postRepository;
 
 http://projects.spring.io/spring-data <br/><br/>
 
-<img src="./images/repository.png" width="50%" /><br/>
+<img src="./images/repository.png" width="70%" /><br/>
 - JpaRepository는 PagingAndSortingRepository를 상속 받고 있다. 
 
 <br/><br/><br/><br/>
