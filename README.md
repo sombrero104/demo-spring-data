@@ -218,6 +218,11 @@ http://projects.spring.io/spring-data <br/><br/><br/>
 <img src="./images/repository.png" width="70%" /><br/>
 - JpaRepository는 PagingAndSortingRepository를 상속 받고 있다. 
 - PagingAndSortingRepository는 페이징과 정렬을 지원하는 <br/>
-findAll(Pageable var1), findAll(Sort var1)와 같은 메소드를 가지고 있다. 
+findAll(Pageable var1), findAll(Sort var1)을 가지고 있다. 
+- 그리고 PagingAndSortingRepository는 CrudRepository를 상속받고 있다. <br/>
+CrudRepository는 save(), saveAll(), findById(), existsById(), findAll()<br/>
+, findAllById(), count(), delete(), deleteAll()을 가지고 있다.  
+- CrudRepository는 Repository를 상속받고 있다. <br/>
+Repository는 marker(마커) 인터페이스 역할로 실제로 어떤 기능을 하는 것은 아니다. 
 
 <br/><br/><br/><br/>
