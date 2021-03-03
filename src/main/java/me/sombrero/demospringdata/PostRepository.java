@@ -14,7 +14,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface PostRepository extends JpaRepository<Post, Long> { // < 엔티티 타입, 엔티티에서 사용하는 아이디(PK 타입) >
 
     /**
-     * 이렇게만 만들어두면 메소드 이름을 분석해서 자동으로 쿼리를 만들어준다.
+     * [ 커스텀 메소드 ]
+     * 이렇게만 만들어두면 스프링 데이터 JPA가 메소드 이름을 분석해서 자동으로 쿼리를 만들어준다.
      */
     Page<Post> findByTitleContains(String title, Pageable pageable);
 
