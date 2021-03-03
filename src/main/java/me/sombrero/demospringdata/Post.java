@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/*@NamedQueries({
+        @NamedQuery(name = "all_post", query = "SELECT p FROM Post AS p")
+})*/
 @Entity
 public class Post {
 

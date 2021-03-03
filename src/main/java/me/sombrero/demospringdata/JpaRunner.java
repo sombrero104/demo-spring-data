@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.HashSet;
 import java.util.List;
 
@@ -120,16 +123,34 @@ public class JpaRunner implements ApplicationRunner {
         /**
          * [ JPQL (HQL) ]
          * 이 JPQL(HQL)이 각 DB에 맞는 SQL로 변환이 되어서 최종적으로 변환된 SQL이 실행됨.
+         * JPQL의 단점은 오타가 발생할 수 있다는 것이다. (Type safe하지 않다.)
          */
         // Query query = entityManager.createQuery("SELECT p FROM Post AS p");// 엔티티 Post를 조회.
         /**
          * JPA 2.0 이후부터는 아래와 같이 Typed Query를 만들 수 있다.
          * 이렇게 하면 결과 리스트가 Post타입의 리스트로 나오게 된다.
          */
-        Query query = entityManager.createQuery("SELECT p FROM Post AS p", Post.class);
+        /*Query query = entityManager.createQuery("SELECT p FROM Post AS p", Post.class);
         List<Post> posts = query.getResultList();
-        posts.forEach(System.out::println);
+        posts.forEach(System.out::println);*/
 
+        /**
+         * Type Safe한 쿼리인 Criteria를 사용하는 방법.
+         */
+        /*CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Post> query = builder.createQuery(Post.class);
+        Root<Post> root = query.from(Post.class);
+        query.select(root);
+        List<Post> posts = entityManager.createQuery(query).getResultList();
+        posts.forEach(System.out::println);*/
+
+        /**
+         * NamedQuery 사용하는 방법.
+         * Post 엔티티 상단에 @NamedQueries를 설정해주고 아래와 같이 사용할 수 있다.
+         */
+        /*Query all_post = entityManager.createNamedQuery("all_post");
+        List posts = all_post.getResultList();
+        posts.forEach(System.out::println);*/
     }
 
 }
