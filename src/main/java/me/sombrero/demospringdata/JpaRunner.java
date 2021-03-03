@@ -48,7 +48,7 @@ public class JpaRunner implements ApplicationRunner {
         /**
          * 아래와 같이 하이버네이트의 API인 Session을 꺼내서 사용할 수도 있다.
          */
-        Session session = entityManager.unwrap(Session.class);
+        Session session = entityManager.unwrap(Session.class); // JPA가 감싸고 있는 하이버네이트 API에 접근해서 사용.
         /*session.save(account); // 하이버네이트로 저장하기.
         session.save(study);*/
 
