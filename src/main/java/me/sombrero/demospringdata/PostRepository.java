@@ -1,32 +1,9 @@
 package me.sombrero.demospringdata;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-import java.util.List;
-
-@Repository
-@Transactional
-public class PostRepository {
-
-    // @Autowired
-    @PersistenceContext
-    EntityManager entityManager;
-
-    public Post add(Post post) {
-        entityManager.persist(post);
-        return post;
-    }
-
-    public void delete(Post post) {
-        entityManager.remove(post);
-    }
-
-    public List<Post> findAll() {
-        return entityManager.createQuery("SELECT p FROM Post AS p", Post.class).getResultList();
-    }
-
+/**
+ * 원래는 스프링부트가 아니라면 @Configuration이 붙은 클래스에 @EnableJpaRepositories를 붙여줘야 한다.
+ */
+public interface PostRepository extends JpaRepository<Post, Long> { // < 엔티티 타입, 엔티티에서 사용하는 아이디(PK 타입) >
 }
