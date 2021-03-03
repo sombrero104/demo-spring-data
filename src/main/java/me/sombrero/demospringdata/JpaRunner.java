@@ -176,8 +176,8 @@ public class JpaRunner implements ApplicationRunner {
          * 빈을 프로그래밍으로 등록하기.
          * Sombrero, SombreroRegistrar 자바 파일 소스 및 설명 참조.
          */
-        System.out.println("##### sombrero.getName(): " + sombrero.getName()); // SombreroRegistrar에서 덮어쓴 이름이 출력된다.
-        System.out.println("##### sombrero.getDesc(): " + sombrero.getDesc());
+        /*System.out.println("##### sombrero.getName(): " + sombrero.getName()); // SombreroRegistrar에서 덮어쓴 이름이 출력된다.
+        System.out.println("##### sombrero.getDesc(): " + sombrero.getDesc());*/
     }
 
 }
