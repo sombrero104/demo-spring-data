@@ -156,9 +156,9 @@ public class JpaRunner implements ApplicationRunner {
          * NativeQuery 사용하는 방법. (실제 DB 쿼리를 작성해서 사용하는 방법.)
          * createNativeQuery() 메소드 API 자체가 타입을 지원해주지는 않지만 'List<Post>'와 같이 받을 때 타입으로 받을 수는 있다.
          */
-        Query nativeQuery = entityManager.createNativeQuery("SELECT * FROM Post", Post.class);
+        /*Query nativeQuery = entityManager.createNativeQuery("SELECT * FROM Post", Post.class);
         List<Post> posts = nativeQuery.getResultList();
-        posts.forEach(System.out::println);
+        posts.forEach(System.out::println);*/
     }
 
 }
