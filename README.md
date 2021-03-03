@@ -109,6 +109,7 @@ JPA에 의해 관리되었던 객체가 트랜잭션이 끝나서 Session 밖으
 - @ManyToOne의 기본값은 Eager
 <br/>
 
+## Post 조회
 ### 1. Post에서 comments가 Lazy인 경우. 
 @OneToMany이기 때문에 기본적으로 Lazy모드이다. 
 <pre>
@@ -146,7 +147,15 @@ where
     post0_.id=?
 </pre><br/> 
 
+## comment 조회 
 ### comment를 가져오는 경우
+@ManyToOne은 기본적으로 Eager모드이다. <br/> 
+때문에 아래와 같이 comment만 가져와도 post도 같이 가져오는 것을 확인할 수 있다. 
+<pre>
+Comment comment = session.get(Comment.class, 2l);
+System.out.println("##### comment.getComment(): " + comment.getComment());
+System.out.println("##### comment.getPost().getTitle(): " + comment.getPost().getTitle());
+</pre>
 <pre>
 select
     comment0_.id as id1_1_0_,
