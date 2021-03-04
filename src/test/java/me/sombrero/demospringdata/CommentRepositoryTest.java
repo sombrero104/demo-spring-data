@@ -134,6 +134,7 @@ class CommentRepositoryTest {
 
         /**
          * 2. ListenableFuture로 반환 받기. (쿼리에서는 비추?)
+         * taskExecutor 빈을 찾을 수 없다고도 로그에 찍히는데.. 빈으로 만들어주면 또 다른 문제가 발생한ㄷ..
          * 좀 더 알아봐야 알 수 있을 듯..
          */
         /*this.createComment(20, "spring data jpa");
