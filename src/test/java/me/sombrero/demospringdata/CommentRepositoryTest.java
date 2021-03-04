@@ -67,7 +67,7 @@ class CommentRepositoryTest {
         /*List<Comment> comments = commentRepository.findAll();
         assertThat(comments).isEmpty();*/
 
-        commentRepository.save(null);
+        // commentRepository.save(null);
     }
 
 }
