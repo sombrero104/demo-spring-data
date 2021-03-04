@@ -249,7 +249,8 @@ QueryLookupStrategy의 구현체를 찾아서 JpaQueryLookupStrategy를 보면 <
 메소드 이름으로 쿼리를 만들어내는 CreateQueryLookupStrategy와<br/>
 이미 정의된 쿼리를 찾아내는 DeclaredQueryLookupStrategy가 있는 것을 확인할 수 있다. <br/>
 이미 정의된 쿼리를 찾아내는 DeclaredQueryLookupStrategy를 보면 순서대로 <br/>
-fromQueryAnnotation()로 쿼리 애노테이션을 찾고 있으면 리턴하고,<br/>
-그 다음으로 fromProcedureAnnotation()로 프로시저 애노테이션을 찾고 있으면 리턴하고,<br/>
-그 다음으로 getNamedQueryName()로 NamedQuery를 찾고 있으면 리턴하는 것을 확인할 수 있다. <br/>
+fromQueryAnnotation()로 @Query 애노테이션을 찾은 후 존재하면 리턴하고,<br/>
+그 다음으로 fromProcedureAnnotation()로 @Procedure 애노테이션을 찾은 후 존재하면 리턴하고,<br/>
+그 다음으로 getNamedQueryName()로 @NamedQuery를 찾은 후 존재하면 리턴하는 것을 확인할 수 있다. <br/>
+때문에 이 세가지를 다 설정하게 되면 @Query가 먼저 적용된다는 것을 알 수 있다. 
 <br/><br/>

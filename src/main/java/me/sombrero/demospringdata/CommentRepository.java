@@ -1,6 +1,7 @@
 package me.sombrero.demospringdata;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.RepositoryDefinition;
 
 import java.util.List;
