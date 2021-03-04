@@ -255,7 +255,13 @@ fromQueryAnnotation()로 @Query 애노테이션을 찾은 후 존재하면 리�
 때문에 이 세가지를 다 설정하게 되면 @Query가 먼저 적용된다는 것을 알 수 있다. 
 <br/><br/>
 
-## 쿼리 만드는 방법 (JPA가 내 의도대로 만들게 하는 방법)
+## 메소드 이름으로 쿼리 만드는 방법 (JPA가 내 의도대로 만들게 하는 방법)
+<pre>
+public interface PostRepository extends JpaRepository❮Post, Long❯ { 
+    Page❮Post❯ findByTitleContains(String title, Pageable pageable);
+    long countByTitleContains(String title);
+}
+</pre>
 <pre>
 리턴타입 {접두어}{도입부}By{프로퍼티 표현식}(조건식)[(And|Or){프로퍼티 표현식}(조건식)]{정렬 조건} (매개변수)
 </pre>
