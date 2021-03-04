@@ -1,5 +1,6 @@
 package me.sombrero.demospringdata;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.RepositoryDefinition;
 
 import java.util.List;
@@ -23,5 +24,9 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
      * 복사해서 가져와서 써도 된다.
      */
     long count();
+
+    // @Query("SELECT c FROM Comment AS c")
+    @Query(value = "SELECT * FROM Comment", nativeQuery = true)
+    List<Comment> findByTitleContains(String keyword);
 
 }
