@@ -268,4 +268,5 @@ public interface PostRepository extends JpaRepository❮Post, Long❯ {
 </pre>
 <img src="./images/jpa_repo_query.png" width="70%" /><br/>
 테스트를 만들어서 쿼리를 확인하고 내가 만든 쿼리 메소드가 원래 내가 의도한 쿼리가 맞는지 항상 확인한다. <br/>
+스프링 데이터가 만들 수 없는 쿼리는 애초에 에러가 발생한다. <br/>
 <br/><br/><br/><br/>
