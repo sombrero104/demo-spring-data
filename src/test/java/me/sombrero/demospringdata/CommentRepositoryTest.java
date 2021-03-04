@@ -105,13 +105,13 @@ class CommentRepositoryTest {
          * 3. 스트림 타입으로 반환 받아서 테스트 하기.
          * 스트림은 다 쓴 후 닫아줘야 하기 때문에 try-with-resources를 사용해야 한다.
          */
-        this.createComment(20, "spring data jpa");
+        /*this.createComment(20, "spring data jpa");
         this.createComment(55, "HIBERNATE SPRING");
         this.createComment(70, "Hello Spring");
         try(Stream<Comment> comments = commentRepository.findByCommentContainsIgnoreCaseOrderByLikeCountDesc("Spring")) {
             Comment firstComment = comments.findFirst().get();
             assertThat(firstComment.getLikeCount()).isEqualTo(70);
-        }
+        }*/
 
     }
 

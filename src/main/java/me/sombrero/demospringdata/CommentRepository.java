@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.scheduling.annotation.Async;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -65,5 +66,13 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
     /**
      * Stream으로 반환.
      */
-    Stream<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
+    // Stream<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
+
+    /**
+     * 비동기 쿼리. (권장하는 방법은 아님.)
+     * 백그라운드에서 동작하는 스레드풀에 이 메소드를 실행하는 작업을 위임한다.
+     * 이 메소드를 호출해서 실행하는 것을 별도의 스레드에서 동작 시키는 것이다.
+     */
+    @Async
+    List<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
 }
