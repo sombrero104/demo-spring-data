@@ -237,5 +237,12 @@ Repository는 marker(마커) 인터페이스 역할로 실제로 어떤 기능�
 @Query(value = "SELECT * FROM Comment", nativeQuery = true)
 </pre>
 - 미리 정의한 쿼리 찾아보고 없으면 메소드 이름 분석해서 만들기. (CREATE_IF_NOT_FOUND) (기본값)
+<br/>
 
-### 쿼리 만들기 전략 
+### 쿼리 만들기 전략 설정
+<pre>
+@EnableJpaRepositories(queryLookupStrategy = QueryLookupStrategy.Key.CREATE)
+@EnableJpaRepositories(queryLookupStrategy = QueryLookupStrategy.Key.USE_DECLARED_QUERY)
+@EnableJpaRepositories(queryLookupStrategy = QueryLookupStrategy.Key.CREATE_IF_NOT_FOUND) (기본값) 
+</pre>
+
