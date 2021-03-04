@@ -47,7 +47,8 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
     /**
      * IgnoreCase를 붙이면
      *  => upper(comment0_.comment) like upper(?)
-     * 파라미터로 받은 값의 대소문자 상관없이 찾아준다.
+     * 위 처럼 쿼리문에 upper()를 사용해서
+     * DB의 값과 파라미터로 받은 값을 대문자로 변환해서 같은지 비교한다.
      */
     List<Comment> findByCommentContainsIgnoreCase(String keyword);
 }
