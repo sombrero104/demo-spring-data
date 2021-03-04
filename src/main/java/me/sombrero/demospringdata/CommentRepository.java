@@ -30,8 +30,8 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
     long count();
 
     // @Query("SELECT c FROM Comment AS c")
-    @Query(value = "SELECT * FROM Comment", nativeQuery = true)
-    List<Comment> findByCommentContains(String keyword);
+    /*@Query(value = "SELECT * FROM Comment", nativeQuery = true)
+    List<Comment> findByCommentContains(String keyword);*/
 
     /**
      * Page로 리턴하기 위해서는 파라미터로 Pageable을 줘야 한다.
@@ -44,4 +44,10 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
     // Page<Comment> findByLikeCountGreaterThanAndComment(int likeCount, Comment comment, Pageable pageable);
     List<Comment> findByLikeCountGreaterThanAndComment(int likeCount, Comment comment, Sort sort);
 
+    /**
+     * IgnoreCase를 붙이면
+     *  => upper(comment0_.comment) like upper(?)
+     * 파라미터로 받은 값의 대소문자 상관없이 찾아준다.
+     */
+    List<Comment> findByCommentContainsIgnoreCase(String keyword);
 }

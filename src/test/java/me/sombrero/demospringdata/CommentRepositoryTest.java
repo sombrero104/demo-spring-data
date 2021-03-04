@@ -68,6 +68,12 @@ class CommentRepositoryTest {
         assertThat(comments).isEmpty();*/
 
         // commentRepository.save(null);
+
+        Comment comment = new Comment();
+        comment.setComment("spring data jpa");
+        commentRepository.save(comment);
+        List<Comment> comments = commentRepository.findByCommentContainsIgnoreCase("Spring");
+        assertThat(comments.size()).isEqualTo(1);
     }
 
 }
