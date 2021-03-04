@@ -74,7 +74,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     /**
      * @Async (쿼리에서는 비추?)
-     * 비동기 쿼리. (권장하는 방법은 아님.)
+     * 비동기 쿼리. (권장하는 방법은 아님?)
      * 백그라운드에서 동작하는 스레드풀에 이 메소드를 실행하는 작업을 위임한다.
      * 이 메소드를 호출해서 실행하는 것을 별도의 스레드에서 동작 시키는 것이다.
      * non-blocking으로 만들려면 반환 타입을 Future로 감싸준다.
@@ -86,6 +86,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
      * DB에 쿼리를 비동기로 날려도 성능 부하는 DB가 받기 때문에 결국엔 부하는 같다.
      * 그냥.. 처음 비동기를 시작한 메인 스레드만 다른 일을 좀 더 빨리 처리할 수 있을 뿐이다.
      * 그래서 쿼리할 때에 비동기로 설정하는 것은 비추..라고 한다.
+     * 정확한건 좀 더 알아봐야 알 수 있을 것 같다.
      */
     // @Async
     // Future<List<Comment>> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);

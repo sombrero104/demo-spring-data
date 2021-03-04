@@ -122,7 +122,7 @@ class CommentRepositoryTest {
          * [ 비동기 쿼리. ] (쿼리에서는 비추?)
          * @Async
          * 1. Future로 반환 받기. (쿼리에서는 비추?)
-         * 아래 테스트로는 테스트 불가능. 테스트하는 방법이 복잡함.
+         * 아래 테스트로는 테스트 불가능..? 테스트하는 방법이 복잡함..?
          */
         /*this.createComment(20, "spring data jpa");
         this.createComment(55, "HIBERNATE SPRING");
@@ -134,6 +134,7 @@ class CommentRepositoryTest {
 
         /**
          * 2. ListenableFuture로 반환 받기. (쿼리에서는 비추?)
+         * 좀 더 알아봐야 알 수 있을 듯..
          */
         /*this.createComment(20, "spring data jpa");
         this.createComment(55, "HIBERNATE SPRING");
