@@ -1,6 +1,7 @@
 package me.sombrero.demospringdata;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Comment {
@@ -9,6 +10,11 @@ public class Comment {
     private Long id;
 
     private String comment;
+
+    private int likeCount;
+
+    @Temporal(TemporalType.DATE)
+    private Date created = new Date();
 
     @ManyToOne
     private Post post;

@@ -31,9 +31,7 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
 
     // @Query("SELECT c FROM Comment AS c")
     @Query(value = "SELECT * FROM Comment", nativeQuery = true)
-    List<Comment> findByTitleContains(String keyword);
-
-    List<Comment> findTop10();
+    List<Comment> findByCommentContains(String keyword);
 
     /**
      * Page로 리턴하기 위해서는 파라미터로 Pageable을 줘야 한다.
@@ -42,7 +40,8 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
      * Paging 관련 정보 없이 sorting만 하고 싶은 경우에는 파라미터에 Pageable이 아닌 Sort만 정의해 줘도 된다.
      * Sort는 페이징 관련 개념이 없으므로 Page가 아닌 List로 리턴한다.
      */
-    // Page<Comment> findByLikeGreaterThanAndPostOrderByCreatedDesc(int likeCount, Post post, Pageable pageable);
-    // Page<Comment> findByLikeGreaterThanAndPost(int likeCount, Post post, Pageable pageable);
-    List<Comment> findByLikeGreaterThanAndPost(int likeCount, Post post, Sort sort);
+    // Page<Comment> findByLikeCountGreaterThanAndCommentOrderByCreatedDesc(int likeCount, Comment comment, Pageable pageable);
+    // Page<Comment> findByLikeCountGreaterThanAndComment(int likeCount, Comment comment, Pageable pageable);
+    List<Comment> findByLikeCountGreaterThanAndComment(int likeCount, Comment comment, Sort sort);
+
 }

@@ -2,7 +2,10 @@ package me.sombrero.demospringdata;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 /**
  * 원래는 스프링부트가 아니라면 @Configuration이 붙은 클래스에 @EnableJpaRepositories를 붙여줘야 한다.
