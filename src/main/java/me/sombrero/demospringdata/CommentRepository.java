@@ -45,10 +45,14 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
     List<Comment> findByLikeCountGreaterThanAndComment(int likeCount, Comment comment, Sort sort);
 
     /**
+     * [ IgnoreCase ]
      * IgnoreCase를 붙이면
      *  => upper(comment0_.comment) like upper(?)
      * 위 처럼 쿼리문에 upper()를 사용해서
      * DB의 값과 파라미터로 받은 값을 둘 다 대문자로 변환해서 같은지 비교한다.
+     *
+     * [ LikeCountGreaterThan ]
+     * LikeCountGreaterThan을 붙이면 파라미터로 받은 likeCount 값보다 큰 것을 찾아준다.
      */
-    List<Comment> findByCommentContainsIgnoreCase(String keyword);
+    List<Comment> findByCommentContainsIgnoreCaseAndLikeCountGreaterThan(String keyword, int likeCount);
 }
