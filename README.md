@@ -245,4 +245,11 @@ Repository는 marker(마커) 인터페이스 역할로 실제로 어떤 기능�
 @EnableJpaRepositories(queryLookupStrategy = QueryLookupStrategy.Key.USE_DECLARED_QUERY)
 @EnableJpaRepositories(queryLookupStrategy = QueryLookupStrategy.Key.CREATE_IF_NOT_FOUND) (기본값) 
 </pre>
-
+QueryLookupStrategy의 구현체를 찾아서 JpaQueryLookupStrategy를 보면 <br/>
+메소드 이름으로 쿼리를 만들어내는 CreateQueryLookupStrategy와<br/>
+이미 정의된 쿼리를 찾아내는 DeclaredQueryLookupStrategy가 있는 것을 확인할 수 있다. <br/>
+이미 정의된 쿼리를 찾아내는 DeclaredQueryLookupStrategy를 보면 순서대로 <br/>
+fromQueryAnnotation()로 쿼리 애노테이션을 찾고 있으면 리턴하고,<br/>
+그 다음으로 fromProcedureAnnotation()로 프로시저 애노테이션을 찾고 있으면 리턴하고,<br/>
+그 다음으로 getNamedQueryName()로 NamedQuery를 찾고 있으면 리턴하는 것을 확인할 수 있다. <br/>
+<br/><br/>
