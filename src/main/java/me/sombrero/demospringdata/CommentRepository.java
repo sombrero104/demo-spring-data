@@ -43,5 +43,6 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
      * Sort는 페이징 관련 개념이 없으므로 Page가 아닌 List로 리턴한다.
      */
     // Page<Comment> findByLikeGreaterThanAndPostOrderByCreatedDesc(int likeCount, Post post, Pageable pageable);
-    List<Comment> findByLikeGreaterThanAndPostOrderByCreatedDesc(int likeCount, Post post, Sort sort);
+    // Page<Comment> findByLikeGreaterThanAndPost(int likeCount, Post post, Pageable pageable);
+    List<Comment> findByLikeGreaterThanAndPost(int likeCount, Post post, Sort sort);
 }
