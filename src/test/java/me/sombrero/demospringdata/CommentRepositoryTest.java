@@ -51,11 +51,21 @@ class CommentRepositoryTest {
         /**
          * [ Optional로 반환받지 않고 그냥 Entity로 반환받는 경우 ]
          */
-        Comment comment = commentRepository.findById(100l);
+        /*Comment comment = commentRepository.findById(100l);
         if(comment == null) { // 최근에는 null 안쓰는 쪽으로 가는 추세.
             throw new IllegalArgumentException();
-        }
+        }*/
         // assertThat(comment).isNull();
+
+        /**
+         * [ 스프링 데이터 JPA가 반환하는 컬렉션 타입은 null이 될 수 없다. ]
+         * 스프링 데이터 JPA가 지원하는 Repository들이 반환하는 컬렉션 타입들은
+         * 값이 없더라도 결코 null이 되지 않는다.
+         * 비어있는 컬렉션 타입으로 리턴해 주는데 이것은 스프링 데이터 JPA의 특징이다.
+         * 때문에 컬렉션 타입으로 반환받을 때에는 null 체크는 필요가 없는 코드이다.
+         */
+        List<Comment> comments = commentRepository.findAll();
+        assertThat(comments).isEmpty();
     }
 
 }
