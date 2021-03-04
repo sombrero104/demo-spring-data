@@ -1,5 +1,7 @@
 package me.sombrero.demospringdata;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.RepositoryDefinition;
@@ -30,4 +32,8 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
     @Query(value = "SELECT * FROM Comment", nativeQuery = true)
     List<Comment> findByTitleContains(String keyword);
 
+    /**
+     * Page로 리턴하기 위해서는 파라미터로 Pageable을 줘야 한다.
+     */
+    Page<Comment> findByLikeGreaterThanAndPost(int likeCount, Post post, Pageable pageable);
 }
