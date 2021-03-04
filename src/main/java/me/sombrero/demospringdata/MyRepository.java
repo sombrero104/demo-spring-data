@@ -2,6 +2,8 @@ package me.sombrero.demospringdata;
 
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,7 +18,11 @@ public interface MyRepository<T, Id extends Serializable> extends Repository<T, 
      * 반드시 이렇게 해야 하는건 아니다.
      */
 
-    <E extends T> E save(E entity); // 커스텀 메소드. 스프링 데이터 JPA가 자동으로 구현해준다.
+    /**
+     * 파라미터가 null이 아니어야 하는 경우에는 @NonNull을 붙여준다.
+     * 값이 null이어도 되는 경우에는 @Nullable을 붙여준다.
+     */
+    <E extends T> E save(@NonNull E entity); // 커스텀 메소드. 스프링 데이터 JPA가 자동으로 구현해준다.
 
     List<T> findAll();
 
@@ -27,5 +33,6 @@ public interface MyRepository<T, Id extends Serializable> extends Repository<T, 
      * 값이 없는 경우 그냥 null이 나온다.
      */
     // <E extends T> Optional<E> findById(Id id); // Optional을 리턴하는 경우.
+    @Nullable
     <E extends T> E findById(Id id); // Optional을 사용하지 않고 Entity만 반환하는 경우 값이 없으면 null 리턴.
 }
