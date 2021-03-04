@@ -12,6 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -72,12 +73,12 @@ class CommentRepositoryTest {
         assertThat(comments).isEmpty();*/
 
         /**
-         * null을 저장할 경우.
+         * [ null을 저장할 경우. ]
          */
         // commentRepository.save(null);
 
         /**
-         * 쿼리 메소드 만들기.
+         * [ 쿼리 메소드 만들기. ]
          * 1. list 타입으로 반환 받아서 테스트 하기.
          */
         /*this.createComment(20, "spring data jpa");
@@ -87,17 +88,30 @@ class CommentRepositoryTest {
         assertThat(comments).first().hasFieldOrPropertyWithValue("likeCount", 55);*/
 
         /**
-         * 쿼리 메소드 만들기.
+         * [ 쿼리 메소드 만들기. ]
          * 2. 페이지 타입으로 반환 받아서 테스트 하기.
          */
-        this.createComment(20, "spring data jpa");
+        /*this.createComment(20, "spring data jpa");
         this.createComment(55, "HIBERNATE SPRING");
         this.createComment(70, "Hello Spring");
         PageRequest pageRequest = PageRequest.of(0, 2, Sort.by(Sort.Direction.DESC, "likeCount"));
         Page<Comment> comments = commentRepository.findByCommentContainsIgnoreCase("Spring", pageRequest);
         assertThat(comments.getNumberOfElements()).isEqualTo(2); // 현재 페이지 엘리먼트 갯수.
         // comments.getTotalElements()는 페이지와 상관없이 전체 갯수.
-        assertThat(comments).first().hasFieldOrPropertyWithValue("likeCount", 70);
+        assertThat(comments).first().hasFieldOrPropertyWithValue("likeCount", 70);*/
+
+        /**
+         * [ 쿼리 메소드 만들기. ]
+         * 3. 스트림 타입으로 반환 받아서 테스트 하기.
+         * 스트림은 다 쓴 후 닫아줘야 하기 때문에 try-with-resources를 사용해야 한다.
+         */
+        this.createComment(20, "spring data jpa");
+        this.createComment(55, "HIBERNATE SPRING");
+        this.createComment(70, "Hello Spring");
+        try(Stream<Comment> comments = commentRepository.findByCommentContainsIgnoreCaseOrderByLikeCountDesc("Spring")) {
+            Comment firstComment = comments.findFirst().get();
+            assertThat(firstComment.getLikeCount()).isEqualTo(70);
+        }
 
     }
 

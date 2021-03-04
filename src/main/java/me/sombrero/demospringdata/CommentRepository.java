@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.RepositoryDefinition;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * 스프링 데이터 JPA Repository 인터페이스들(JpaRepository, PagingAndSortingRepository, CrudRepository)이
@@ -54,7 +55,15 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
      * [ LikeCountGreaterThan ]
      * LikeCountGreaterThan을 붙이면 파라미터로 받은 likeCount 값보다 큰 것을 찾아준다.
      */
-    List<Comment> findByCommentContainsIgnoreCaseAndLikeCountGreaterThanOrderByLikeCountDesc(String keyword, int likeCount);
+    // List<Comment> findByCommentContainsIgnoreCaseAndLikeCountGreaterThanOrderByLikeCountDesc(String keyword, int likeCount);
 
-    Page<Comment> findByCommentContainsIgnoreCase(String keyword, Pageable pageable);
+    /**
+     * Pageable을 파라미터로 받아서 Page로 반환.
+     */
+    // Page<Comment> findByCommentContainsIgnoreCase(String keyword, Pageable pageable);
+
+    /**
+     * Stream으로 반환.
+     */
+    Stream<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
 }
