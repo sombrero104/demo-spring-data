@@ -267,4 +267,5 @@ public interface PostRepository extends JpaRepository❮Post, Long❯ {
 리턴타입 {접두어}{도입부}By{프로퍼티 표현식}(조건식)[(And|Or){프로퍼티 표현식}(조건식)]{정렬 조건} (매개변수)
 </pre>
 <img src="./images/jpa_repo_query.png" width="70%" /><br/>
+테스트를 만들어서 쿼리를 확인하고 내가 의도한 쿼리가 맞는지 항상 확인한다. <br/>
 <br/><br/><br/><br/>
