@@ -85,6 +85,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
      * 보통 성능 병목 현상은 DB에서 부하가 일어나서 발생하는데..
      * DB에 쿼리를 비동기로 날려도 성능 부하는 DB가 받기 때문에 결국엔 부하는 같다.
      * 그냥.. 처음 비동기를 시작한 메인 스레드만 다른 일을 좀 더 빨리 처리할 수 있을 뿐이다.
+     * 그리고 @Transactional과 @Async를 같이 사용하면 문제가 발생한다.
      * 그래서 쿼리할 때에 비동기로 설정하는 것은 비추..라고 한다.
      * 정확한건 좀 더 알아봐야 알 수 있을 것 같다.
      */
