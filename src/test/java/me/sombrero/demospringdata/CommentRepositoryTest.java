@@ -64,8 +64,10 @@ class CommentRepositoryTest {
          * 비어있는 컬렉션 타입으로 리턴해 주는데 이것은 스프링 데이터 JPA의 특징이다.
          * 때문에 컬렉션 타입으로 반환받을 때에는 null 체크는 필요가 없는 코드이다.
          */
-        List<Comment> comments = commentRepository.findAll();
-        assertThat(comments).isEmpty();
+        /*List<Comment> comments = commentRepository.findAll();
+        assertThat(comments).isEmpty();*/
+
+        commentRepository.save(null);
     }
 
 }
