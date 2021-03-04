@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
@@ -67,14 +71,41 @@ class CommentRepositoryTest {
         /*List<Comment> comments = commentRepository.findAll();
         assertThat(comments).isEmpty();*/
 
+        /**
+         * null을 저장할 경우.
+         */
         // commentRepository.save(null);
 
+        /**
+         * 쿼리 메소드 만들기.
+         * 1. list 타입으로 반환 받아서 테스트 하기.
+         */
+        /*this.createComment(20, "spring data jpa");
+        this.createComment(55, "HIBERNATE SPRING");
+        List<Comment> comments = commentRepository.findByCommentContainsIgnoreCaseAndLikeCountGreaterThanOrderByLikeCountDesc("Spring", 10);
+        assertThat(comments.size()).isEqualTo(2);
+        assertThat(comments).first().hasFieldOrPropertyWithValue("likeCount", 55);*/
+
+        /**
+         * 쿼리 메소드 만들기.
+         * 2. 페이지 타입으로 반환 받아서 테스트 하기.
+         */
+        this.createComment(20, "spring data jpa");
+        this.createComment(55, "HIBERNATE SPRING");
+        this.createComment(70, "Hello Spring");
+        PageRequest pageRequest = PageRequest.of(0, 2, Sort.by(Sort.Direction.DESC, "likeCount"));
+        Page<Comment> comments = commentRepository.findByCommentContainsIgnoreCase("Spring", pageRequest);
+        assertThat(comments.getNumberOfElements()).isEqualTo(2); // 현재 페이지 엘리먼트 갯수.
+        // comments.getTotalElements()는 페이지와 상관없이 전체 갯수.
+        assertThat(comments).first().hasFieldOrPropertyWithValue("likeCount", 70);
+
+    }
+
+    private void createComment(int likeCount, String commentStr) {
         Comment comment = new Comment();
-        comment.setComment("spring data jpa");
-        comment.setLikeCount(100);
+        comment.setComment(commentStr);
+        comment.setLikeCount(likeCount);
         commentRepository.save(comment);
-        List<Comment> comments = commentRepository.findByCommentContainsIgnoreCaseAndLikeCountGreaterThan("Spring", 10);
-        assertThat(comments.size()).isEqualTo(1);
     }
 
 }

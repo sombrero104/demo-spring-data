@@ -54,5 +54,7 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
      * [ LikeCountGreaterThan ]
      * LikeCountGreaterThan을 붙이면 파라미터로 받은 likeCount 값보다 큰 것을 찾아준다.
      */
-    List<Comment> findByCommentContainsIgnoreCaseAndLikeCountGreaterThan(String keyword, int likeCount);
+    List<Comment> findByCommentContainsIgnoreCaseAndLikeCountGreaterThanOrderByLikeCountDesc(String keyword, int likeCount);
+
+    Page<Comment> findByCommentContainsIgnoreCase(String keyword, Pageable pageable);
 }
