@@ -258,8 +258,8 @@ fromQueryAnnotation()로 @Query 애노테이션을 찾은 후 존재하면 리�
 ## 메소드 이름으로 쿼리 만드는 방법 (JPA가 내 의도대로 만들게 하는 방법)
 <pre>
 public interface PostRepository extends JpaRepository❮Post, Long❯ { 
-    Page❮Post❯ findByTitleContains(String title, Pageable pageable);
-    long countByTitleContains(String title);
+    Page❮Post❯ findByTitleContains(String title, Pageable pageable); => JPA가 메소드 이름을 분석하여 쿼리를 만든다.
+    long countByTitleContains(String title); => JPA가 메소드 이름을 분석하여 쿼리를 만든다.
 }
 </pre>
 <pre>
