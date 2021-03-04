@@ -2,6 +2,7 @@ package me.sombrero.demospringdata;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.RepositoryDefinition;
@@ -32,8 +33,15 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
     @Query(value = "SELECT * FROM Comment", nativeQuery = true)
     List<Comment> findByTitleContains(String keyword);
 
+    List<Comment> findTop10();
+
     /**
      * Page로 리턴하기 위해서는 파라미터로 Pageable을 줘야 한다.
+     * 그냥 List로 반환하면 페이지 관련 정보 없이 리턴되는 것이다.
+     * Pageable에 sort() 메소드가 있어서 sorting 관련 정보도 넣을 수 있다.
+     * Paging 관련 정보 없이 sorting만 하고 싶은 경우에는 파라미터에 Pageable이 아닌 Sort만 정의해 줘도 된다.
+     * Sort는 페이징 관련 개념이 없으므로 Page가 아닌 List로 리턴한다.
      */
-    Page<Comment> findByLikeGreaterThanAndPost(int likeCount, Post post, Pageable pageable);
+    // Page<Comment> findByLikeGreaterThanAndPostOrderByCreatedDesc(int likeCount, Post post, Pageable pageable);
+    List<Comment> findByLikeGreaterThanAndPostOrderByCreatedDesc(int likeCount, Post post, Sort sort);
 }
