@@ -227,7 +227,7 @@ Repository는 marker(마커) 인터페이스 역할로 실제로 어떤 기능�
 
 <br/><br/><br/><br/>
 
-# 쿼리 
+# 쿼리 만들기 전략
 - 메소드 이름 분석해서 쿼리 만들기. (CREATE) <br/>
 메소드 이름을 분석해서 스프링 데이터 JPA가 쿼리를 만들어 준다.
 - 미리 정의해 둔 쿼리 찾아 사용하기. (USE_DECLARED_QUERY)<br/>
@@ -236,4 +236,6 @@ Repository는 marker(마커) 인터페이스 역할로 실제로 어떤 기능�
 @Query("SELECT c FROM Comment AS c")
 @Query(value = "SELECT * FROM Comment", nativeQuery = true)
 </pre>
-- 미리 정의한 쿼리 찾아보고 없으면 만들기 (CREATE_IF_NOT_FOUND)
+- 미리 정의한 쿼리 찾아보고 없으면 메소드 이름 분석해서 만들기. (CREATE_IF_NOT_FOUND) (기본값)
+
+### 쿼리 만들기 전략 
