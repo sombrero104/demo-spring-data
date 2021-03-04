@@ -73,7 +73,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     // Stream<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
 
     /**
-     * @Async (쿼리에서는 비추?)
+     * @Async (쿼리에서는 비추? 비동기보다는 웹플럭스를 추천)
      * 비동기 쿼리. (권장하는 방법은 아님?)
      * 백그라운드에서 동작하는 스레드풀에 이 메소드를 실행하는 작업을 위임한다.
      * 이 메소드를 호출해서 실행하는 것을 별도의 스레드에서 동작 시키는 것이다.
