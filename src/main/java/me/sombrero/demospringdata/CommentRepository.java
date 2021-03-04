@@ -3,12 +3,15 @@ package me.sombrero.demospringdata;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.List;
+import java.util.concurrent.Future;
 import java.util.stream.Stream;
 
 /**
@@ -19,7 +22,8 @@ import java.util.stream.Stream;
  * 커스텀 메소드도 자동으로 구현해준다.
  */
 // @RepositoryDefinition(domainClass = Comment.class, idClass = Long.class) // 엔티티 타입, 엔티티에서 사용하는 아이디(PK 타입)
-public interface CommentRepository extends MyRepository<Comment, Long> { // 여기에서 정의하지 않고 MyRepository 상속 받도록 변경했다.
+// public interface CommentRepository extends MyRepository<Comment, Long> { // 여기에서 정의하지 않고 MyRepository 상속 받도록 변경했다.
+public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     /*Comment save(Comment comment); // 커스텀 메소드. 스프링 데이터 JPA가 자동으로 구현해준다.
 
@@ -69,11 +73,21 @@ public interface CommentRepository extends MyRepository<Comment, Long> { // 여�
     // Stream<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
 
     /**
-     * @Async
+     * @Async (쿼리에서는 비추?)
      * 비동기 쿼리. (권장하는 방법은 아님.)
      * 백그라운드에서 동작하는 스레드풀에 이 메소드를 실행하는 작업을 위임한다.
      * 이 메소드를 호출해서 실행하는 것을 별도의 스레드에서 동작 시키는 것이다.
+     * non-blocking으로 만들려면 반환 타입을 Future로 감싸준다.
+     *
+     * @Async를 사용하려면 @Configuration이 있는 곳에 @EnableAsync를 붙여줘야 한다.
+     *
+     * 그런데..
+     * 보통 성능 병목 현상은 DB에서 부하가 일어나서 발생하는데..
+     * DB에 쿼리를 비동기로 날려도 성능 부하는 DB가 받기 때문에 결국엔 부하는 같다.
+     * 그냥.. 처음 비동기를 시작한 메인 스레드만 다른 일을 좀 더 빨리 처리할 수 있을 뿐이다.
+     * 그래서 쿼리할 때에 비동기로 설정하는 것은 비추..라고 한다.
      */
-    @Async
-    List<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
+    // @Async
+    // Future<List<Comment>> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
+    // ListenableFuture<List<Comment>> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String keyword);
 }

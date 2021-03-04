@@ -8,10 +8,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.lang.Nullable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,7 +30,7 @@ class CommentRepositoryTest {
     CommentRepository commentRepository;
 
     @Test
-    void crud() {
+    void crud() throws ExecutionException, InterruptedException {
         /*Comment comment = new Comment();
         comment.setComment("Hello comment!!");
         commentRepository.save(comment);
@@ -113,6 +118,54 @@ class CommentRepositoryTest {
             assertThat(firstComment.getLikeCount()).isEqualTo(70);
         }*/
 
+        /**
+         * [ 비동기 쿼리. ] (쿼리에서는 비추?)
+         * @Async
+         * 1. Future로 반환 받기. (쿼리에서는 비추?)
+         * 아래 테스트로는 테스트 불가능. 테스트하는 방법이 복잡함.
+         */
+        /*this.createComment(20, "spring data jpa");
+        this.createComment(55, "HIBERNATE SPRING");
+        Future<List<Comment>> future = commentRepository.findByCommentContainsIgnoreCaseOrderByLikeCountDesc("Spring"); // 호출 자체는 non-blocking call.
+        System.out.println("======================================");
+        System.out.println("Is done? " + future.isDone()); // 결과가 나왔는지 안나왔는지 확인할 수 있다.
+        List<Comment> comments = future.get();// 결과가 나올 때까지 무작정 기다린다. (blocking)
+        comments.forEach(System.out::println);*/
+
+        /**
+         * 2. ListenableFuture로 반환 받기. (쿼리에서는 비추?)
+         */
+        /*this.createComment(20, "spring data jpa");
+        this.createComment(55, "HIBERNATE SPRING");
+        commentRepository.flush(); // JPA Repository API.
+        List<Comment> all = commentRepository.findAll();
+        assertThat(all.size()).isEqualTo(2);*/
+
+        // 여기서부터는 아예 다른 스레드. 그래서 하이버네이트가 위까지만 실행한 후
+        // @DataJpaTest와 같이 데이터용 테스트들은 기본적으로 @Transactional를 가지고 있는데
+        // @Transactional이 붙어있으면 기본적으로 모든 테스트는 롤백을 시킨다.
+        // 그래서 하이버네이트가 '어차피 롤백시킬거 내가 뭐하러 저장해'라고 하면서 저장도 안한다.
+        // (캐시에만 넣어놓고 실제 데이터베이스에는 sync하지 않는다.)
+        // 아래 코드는 아예 다른 스레드이기 때문에 다른곳으로 가버리고 난 결과를 볼 수 없다..
+        /*ListenableFuture<List<Comment>> future = commentRepository.findByCommentContainsIgnoreCaseOrderByLikeCountDesc("Spring");
+        System.out.println("======================================");
+        System.out.println("Is done? " + future.isDone()); // 결과가 나왔는지 안나왔는지 확인할 수 있다.
+
+        future.addCallback(new ListenableFutureCallback<List<Comment>>() {
+            @Override
+            public void onFailure(Throwable ex) {
+                System.out.println(ex);
+            }
+
+            @Override
+            public void onSuccess(List<Comment> result) {
+                System.out.println("-------------------------------------");
+                System.out.println("##### " + (result != null));
+                System.out.println("##### " + result.size());
+                result.forEach(System.out::println);
+            }
+        });
+        Thread.sleep(50000l);*/
     }
 
     private void createComment(int likeCount, String commentStr) {
